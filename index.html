@@ -550,7 +550,88 @@
     font-size: 20px;
     margin: 5px 0;
 }
+/* --- RESOURCES & VIDEO CARDS --- */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
 
+    .video-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .video-card:hover {
+      border-color: rgba(37, 99, 235, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12);
+    }
+
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-color: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .video-thumb::after {
+      content: '▶';
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 18px;
+      padding-left: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .video-card:hover .video-thumb::after {
+      transform: scale(1.1);
+    }
+
+    .video-info {
+      padding: 20px;
+    }
+
+    .video-info strong {
+      display: block;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .video-info span {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .dataset-status {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+	  
   </style>
 </head>
 <body>
@@ -563,6 +644,7 @@
     <li><a href="#prototype">Outputs</a></li>
     <li><a href="#directions">Directions</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+	<li><a href="#resources">Resources</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </nav>
@@ -731,6 +813,104 @@
   </div>
 </section>
 
+<hr class="divider" />
+
+<section id="resources">
+  <div class="section-label">05 / Resources & Data</div>
+  <h2>Datasets & Academic Context</h2>
+  <p class="lead">
+    The foundational data driving these prototypes, alongside real-world implementations of AI in electron microscopy that inspire this research direction.
+  </p>
+
+  <div class="result-group">
+    <h3>Research Datasets</h3>
+    <div class="directions-grid">
+      
+      <div class="dir-card" style="border-top: 4px solid var(--accent);">
+        <h3 style="font-size: 1.4rem;">Nanoparticle TEM Image Dataset</h3>
+        <span class="dataset-status" style="background: rgba(37, 99, 235, 0.1); color: var(--accent);">Active / In Use</span>
+        <p style="font-size: 16px;">A Kaggle dataset containing Transmission Electron Microscopy (TEM) images of nanoparticles. This was utilized to validate the initial DINOv2 and SAM zero-shot clustering pipelines without risking proprietary data.</p>
+        <a href="https://www.kaggle.com/datasets/ziya07/nanoparticle-tem-image-dataset" target="_blank" style="color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; margin-top: 12px;">View Dataset &rarr;</a>
+      </div>
+      
+      <div class="dir-card" style="border-top: 4px solid var(--muted);">
+        <h3 style="font-size: 1.4rem;">EMPIAR Public Archive</h3>
+        <span class="dataset-status" style="background: var(--surface2); color: var(--muted);">Planned / Future Scope</span>
+        <p style="font-size: 16px;">The Electron Microscopy Public Image Archive. Planned for upcoming research phases to test the AI models against large-scale, complex biological and raw material samples.</p>
+        <a href="https://www.ebi.ac.uk/empiar/" target="_blank" style="color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; margin-top: 12px;">Explore EMPIAR &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="result-group">
+    <h3>Related AI & Microscopy Talks</h3>
+    <div class="video-grid">
+      
+      <a href="https://www.youtube.com/watch?v=SdlftTq74-w" target="_blank" class="video-card">
+        <div class="video-thumb" style="background-image: url('https://i.ytimg.com/vi/SdlftTq74-w/maxresdefault.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="video-info">
+          <strong>Real-time ML Inside a $2M Electron Microscope</strong>
+          <span>Theia Scientific / Grafana</span>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=xKYJ1uae6JE" target="_blank" class="video-card">
+        <div class="video-thumb" style="background-image: url('https://i.ytimg.com/vi/xKYJ1uae6JE/maxresdefault.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="video-info">
+          <strong>AI-Guided Transmission Electron Microscope (AutoEM)</strong>
+          <span>Pacific Northwest National Lab</span>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=D2DNvyY8RIk" target="_blank" class="video-card">
+        <div class="video-thumb" style="background-image: url('https://i.ytimg.com/vi/D2DNvyY8RIk/maxresdefault.jpg'); background-size: cover; background-position: center; filter: grayscale(20%);"></div>
+        <div class="video-info">
+          <strong>Artificial intelligence in microscopy</strong>
+          <span>ZEISS Group</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+  
+  <div class="result-group">
+    <h3>Related Articles & Publications</h3>
+    <div class="directions-grid">
+      
+      <div class="dir-card" style="border-top: 4px solid var(--accent2);">
+        <h3 style="font-size: 1.4rem; line-height: 1.3;">Co-Scientist: A multi-agent AI partner to accelerate research</h3>
+        <p style="font-size: 14px; margin-bottom: 8px; font-family: var(--mono); color: var(--text);">Google DeepMind</p>
+        <p style="font-size: 15px; color: var(--muted);">An overview of how multi-agent LLM frameworks are being deployed to assist scientists in formulating hypotheses, designing experiments, and analyzing data.</p>
+        <a href="https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/" target="_blank" style="color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; margin-top: 12px;">Read &rarr;</a>
+      </div>
+
+      <div class="dir-card" style="border-top: 4px solid var(--accent2);">
+        <h3 style="font-size: 1.4rem; line-height: 1.3;">AI-Assisted Workflow for Transmission Electron Microscopy</h3>
+        <p style="font-size: 14px; margin-bottom: 8px; font-family: var(--mono); color: var(--text);">Advanced Materials</p>
+        <p style="font-size: 15px; color: var(--muted);">A breakthrough workflow that automates (S)TEM data analysis, transforming atomic-resolution images into realistic 3D digital twins in minutes instead of days.</p>
+        <a href="https://doi.org/10.1002/adma.202506785" target="_blank" style="color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; margin-top: 12px;">Read &rarr;</a>
+      </div>
+
+      <div class="dir-card" style="border-top: 4px solid var(--accent2);">
+        <h3 style="font-size: 1.4rem; line-height: 1.3;">AI tool automates high-precision nanoparticle analysis in EM</h3>
+        <p style="font-size: 14px; margin-bottom: 8px; font-family: var(--mono); color: var(--text);">EurekAlert-Science News</p>
+        <p style="font-size: 15px; color: var(--muted);">Introduces the "NSYOLO" framework for automated nanoparticle instance segmentation and morphology analysis, eliminating the bottleneck of manual annotation.</p>
+        <a href="https://www.eurekalert.org/news-releases/1129199" target="_blank" style="color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; margin-top: 12px;">Read &rarr;</a>
+      </div>
+
+      <div class="dir-card" style="border-top: 4px solid var(--accent2);">
+        <h3 style="font-size: 1.4rem; line-height: 1.3;">AI in Electron Microscopy for Deep Materials Insights</h3>
+        <p style="font-size: 14px; margin-bottom: 8px; font-family: var(--mono); color: var(--text);">Phys.org</p>
+        <p style="font-size: 15px; color: var(--muted);">Explores how intelligent computer vision frameworks are overcoming blurry boundaries and complex backgrounds for high-throughput nanomaterial characterization.</p>
+        <a href="https://phys.org/news/2026-04-ai-electron-microscopy-materials-insights.html" target="_blank" style="color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; margin-top: 12px;">Read &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+	
 <hr class="divider" />
 
 <!-- ABOUT -->
