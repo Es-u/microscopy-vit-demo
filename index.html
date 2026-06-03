@@ -521,8 +521,17 @@
       section { padding: 60px 24px; }
       .directions-grid, .lab-box, .about-grid { grid-template-columns: 1fr; gap: 32px; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
-      .pipeline { flex-direction: column; align-items: flex-start; }
-      .pipe-arrow { transform: rotate(90deg); margin: 8px 0; }
+      
+      /* Keep the pipeline centered on mobile */
+      .pipeline { 
+        align-items: center; 
+      }
+      
+      /* Ensure the arrow stays pointing down and does not rotate */
+      .pipe-arrow { 
+        transform: none; 
+        margin: 12px 0; 
+      }
     }
 	
 	.pipeline {
